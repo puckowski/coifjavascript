@@ -786,20 +786,9 @@ async function process(fileIndex) {
     } while ((featureMatches.length < 5 || evaluateFeatureMatchCloseness(featureMatches, width, height) < 0.007) && binThreshold < 56);
 
     const estimatedTime = Date.now() - startTime;
-    console.log("Finalizing montage...");
+    console.log('Ellapsed milliseconds: ' + estimatedTime);
 
-    /*
-    const moravec3FileName = `moravec3_${fileIndex}.txt`;
-    const moravec3Text = [file1, file2, ...featureMatches.map(fm => `${fm.x1}\n${fm.y1}\n${fm.x2}\n${fm.y2}`).join('\n')].join('\n');
-    const moravec3Blob = new Blob([moravec3Text], { type: 'text/plain' });
-    const moravec3URL = URL.createObjectURL(moravec3Blob);
-    const moravec3Link = document.createElement('a');
-    moravec3Link.href = moravec3URL;
-    moravec3Link.download = moravec3FileName;
-    document.body.appendChild(moravec3Link);
-    moravec3Link.click();
-    document.body.removeChild(moravec3Link);
-    */
+    console.log("Finalizing montage...");
 
     console.log("Montage finalized.");
 
