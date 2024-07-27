@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="COIFv6 - A JavaScript Computer Vision Project">
     <meta name="author" content="Daniel Puckowski">
-    <meta name="keywords" content="Computer Vision, JavaScript, COIFv6, COIF, Concentric Oval Intensity Features, AI, Machine Learning">
-    
+    <meta name="keywords"
+        content="Computer Vision, JavaScript, COIFv6, COIF, Concentric Oval Intensity Features, AI, Machine Learning">
+
     <title>COIFv6 JavaScript Computer Vision</title>
-    
+
     <style>
         .loader {
             width: 48px;
@@ -37,10 +38,16 @@
 <body>
     <h2>Concentric Oval Intensity Features V6 in JavaScript</h2>
     <canvas id="canvas" style="display:none;"></canvas>
-    <img src="1Hill.JPG" width="200px" height="150px" />
-    <img src="2Hill.JPG" width="200px" height="150px" />
+    <img src="1Hill.JPG" width="200px" height="150px" alt="Sample hill image 1" title="Sample hill image 1" />
+    <img src="2Hill.JPG" width="200px" height="150px" alt="Sample hill image 2" title="Sample hill image 2" />
     <button id="runBtn" onclick="process('1Hill.JPG', '2Hill.JPG', 1)">Run COIFv6</button>
     <span class="loader" style="display: none;"></span>
+    <p>
+        This is a Concentric Oval Intensity Features V6 (COIFv6) JavaScript implementation of the image stitching
+        algorithm invented by Daniel Puckowski.
+    </p>
+    <p>See:</p>
+    <a href="https://github.com/puckowski/coif">Concentric Oval Intensity Features Java on GitHub</a>
     <p>
         Processing may take several minutes depending on your device.
     </p>
