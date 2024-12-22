@@ -129,7 +129,7 @@ class HistResult {
     computeDistances(mergeBinCount) {
         const histLength = 256 / mergeBinCount;
 
-        this.distances = new Array(histLength);
+        this.distances = new Array(Math.floor(histLength));
 
         let sum1 = 0;
         let sum2 = 0;
@@ -148,7 +148,7 @@ class HistResult {
             }
         }
 
-        this.distances2 = new Array(histLength);
+        this.distances2 = new Array(Math.floor(histLength));
 
         sum1 = 0;
         sum2 = 0;
@@ -502,7 +502,7 @@ async function process(fileIndex) {
 
     let featureMatches = [];
     let binThreshold2Negation;
-    let matchingIndex = 0;
+    let matchingIndex;
     let distancesFirst;
     let distancesSecond;
     let dist21;
@@ -532,6 +532,7 @@ async function process(fileIndex) {
         binThreshold2Negation = binThreshold2 * 0.85;
 
         do {
+            matchingIndex = 0;
             console.log("Circles step...");
 
             if (binMergeCount > 5) {
