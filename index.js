@@ -1,5 +1,12 @@
 var selectedImage1 = null;
 var selectedImage2 = null;
+var limitToBestMatches = false;
+
+// Toggle function for the checkbox
+document.getElementById('limitBestMatches').addEventListener('change', function () {
+    limitToBestMatches = this.checked;
+    console.log("Limit to Best Matches: ", limitToBestMatches);
+});
 
 // CircleResult.js
 class CircleResult {
@@ -779,6 +786,67 @@ async function process(fileIndex) {
                 if (featureMatches[i].rotationArrayIndex !== maxKey) {
                     featureMatches.splice(i, 1);
                     i--;
+                }
+            }
+
+            if (limitToBestMatches) {
+                for (let x = 0; x < width + width2; x++) {
+                    for (let y = 0; y < height; y++) {
+                        let colorValue;
+                        if (x < width) {
+                            colorValue = image[x][y];
+                        } else {
+                            colorValue = image2[x - width][y];
+                        }
+                        ctx.fillStyle = `rgb(${colorValue}, ${colorValue}, ${colorValue})`;
+                        ctx.fillRect(x, y, 1, 1);
+                    }
+                }
+
+                // Sort featureMatches by mRoughBinDistance
+                featureMatches.sort((o1, o2) => o1.mRoughBinDistance - o2.mRoughBinDistance);
+
+                let fmi = featureMatches.length - 1;
+
+                while (featureMatches.length > 25 && fmi >= 0) {
+                    let fm = featureMatches[fmi];
+
+                    let x = fm.getX1();
+                    let y = fm.getY1();
+
+                    for (let io = 0; io < featureMatches.length; ++io) {
+                        if (io === fmi) continue;
+
+                        let fm2 = featureMatches[io];
+
+                        if (fm2.getX1() >= (x - 15) && fm2.getX1() <= (x + 15)) {
+                            if (fm2.getY1() >= (y - 15) && fm2.getY1() <= (y + 15)) {
+                                featureMatches.splice(io, 1);  // Remove the element at io
+
+                                if (fmi > io) {
+                                    fmi--;
+                                }
+
+                                io--;  // Adjust for loop after removal
+
+                                if (featureMatches.length === 25) {
+                                    fmi = -1;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    fmi--;
+                }
+
+                // Remove excess elements if size is still > 25
+                while (featureMatches.length > 25) {
+                    featureMatches.pop();
+                }
+
+                for (const f of featureMatches) {
+                    ctx.strokeStyle = 'red';
+                    drawArrowLine(ctx, f.x1, f.y1, f.x2 + width, f.y2, 12, 12);
                 }
             }
 

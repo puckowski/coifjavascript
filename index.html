@@ -40,6 +40,10 @@
     <canvas id="canvas" style="display:none;"></canvas>
     <img src="1Hill.JPG" width="200px" height="150px" alt="Sample hill image 1" title="Sample hill image 1" />
     <img src="2Hill.JPG" width="200px" height="150px" alt="Sample hill image 2" title="Sample hill image 2" />
+    <form id="featureForm">
+        <input type="checkbox" id="limitBestMatches" />
+        <label for="limitBestMatches">Limit to Best Matches (Top 25)</label>
+    </form>
     <button id="runBtn" onclick="process('1Hill.JPG', '2Hill.JPG', 1)">Run COIFv6</button>
     <span class="loader" style="display: none;"></span>
     <p>
