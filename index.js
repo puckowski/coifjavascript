@@ -570,8 +570,8 @@ async function process(fileIndex) {
                     sumOneHr = 0.0;
 
                     for (let h of hr.histResults) {
-                        sum += h.mDistinctiveness;
-                        sumOneHr += h.mDistinctiveness;
+                        sum += h.distinctiveness;
+                        sumOneHr += h.distinctiveness;
                         count++;
                     }
 
@@ -613,8 +613,8 @@ async function process(fileIndex) {
                     sumOneHr = 0.0;
 
                     for (let h of hr.histResults) {
-                        sum += h.mDistinctiveness;
-                        sumOneHr += h.mDistinctiveness;
+                        sum += h.distinctiveness;
+                        sumOneHr += h.distinctiveness;
                         count++;
                     }
 
@@ -698,7 +698,7 @@ async function process(fileIndex) {
                             binDistance = 0;
                             result2 = hr2.histResults[ar[hri]];
 
-                            if (result1.mDistinctiveness < result2.mMinDistinctiveness || result1.mDistinctiveness > result2.mMaxDistinctiveness) {
+                            if (result1.distinctiveness < result2.minDistinctiveness || result1.distinctiveness > result2.maxDistinctiveness) {
                                 distanceFinal = 99999;
                                 break;
                             }
@@ -803,8 +803,8 @@ async function process(fileIndex) {
                     }
                 }
 
-                // Sort featureMatches by mRoughBinDistance
-                featureMatches.sort((o1, o2) => o1.mRoughBinDistance - o2.mRoughBinDistance);
+                // Sort featureMatches by roughBinDistance
+                featureMatches.sort((o1, o2) => o1.roughBinDistance - o2.roughBinDistance);
 
                 let fmi = featureMatches.length - 1;
 
