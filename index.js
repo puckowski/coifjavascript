@@ -658,7 +658,7 @@ async function process(fileIndex) {
                 list1 = hrlist[i];
 
                 for (let n = 0; n < list1.histResults.length; n++) {
-                    if (list1.histResults[n].mLongestSequence > 70) {
+                    if (list1.histResults[n].longestSequence > 70) {
                         hrlist.splice(i, 1);
                         i--;
                         break;
@@ -670,7 +670,7 @@ async function process(fileIndex) {
                 list1 = hrlist2[i];
 
                 for (let n = 0; n < list1.histResults.length; n++) {
-                    if (list1.histResults[n].mLongestSequence > 70) {
+                    if (list1.histResults[n].longestSequence > 70) {
                         hrlist2.splice(i, 1);
                         i--;
                         break;
@@ -1187,6 +1187,8 @@ class MoravecProcessor {
     }
 
     async processWithMarkup(imageSrc) {
+        const eleSpinner = document.querySelector('.loader');
+        eleSpinner.style = '';
         await this.process(imageSrc);
 
         const imageUtils = new ImageUtils();
