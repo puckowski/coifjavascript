@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-     "build": "tsc --lib es2016,dom --target es2016 --outFile index.out.js index.ts"
+    "build": "tsc --lib es2016,dom --target es2016 --outFile index.out.js index.ts",
+    "dev": "vite",
+    "buildVite": "vite build",
+    "preview": "vite preview"
   },
   "repository": {
     "type": "git",
@@ -27,9 +30,8 @@
     "url": "https://github.com/puckowski/coifjavascript/issues"
   },
   "homepage": "https://github.com/puckowski/coifjavascript#readme",
-  "dependencies": {
-  },
   "devDependencies": {
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.2",
+    "vite": "^6.0.6"
   }
 }
