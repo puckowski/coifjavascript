@@ -1,0 +1,35 @@
+{
+  "name": "coifjs",
+  "version": "1.0.0",
+  "description": "Concentric Oval Intensity Features v6 ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+     "build": "tsc --lib es2016,dom --target es2016 --outFile index.out.js index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/puckowski/coifjavascript.git"
+  },
+  "keywords": [
+    "COIF",
+    "Concentric",
+    "Oval",
+    "Intensity",
+    "Feature",
+    "Histogram",
+    "Computer",
+    "Vision"
+  ],
+  "author": "Daniel Puckowski",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/puckowski/coifjavascript/issues"
+  },
+  "homepage": "https://github.com/puckowski/coifjavascript#readme",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "typescript": "^5.7.2"
+  }
+}
